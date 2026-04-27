@@ -36,7 +36,7 @@ export const category: CategoryData[] = [
 ];
 
 export const socials: SocialType[] = [
-	{ icon: FaGithub, path: "https://github.com/ikigamisama" },
+	{ icon: FaGithub, path: "https://github.com/ikidevz" },
 	{
 		icon: FaLinkedin,
 		path: "https://www.linkedin.com/in/franz-monzales-671775135",

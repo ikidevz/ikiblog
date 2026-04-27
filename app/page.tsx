@@ -37,11 +37,20 @@ export default function Home() {
 					</h1>
 					<p
 						className={`mt-10 max-w-175 m-auto text-xs sm:text-base leading-5 ${roboto_mono.className}`}>
-						Welcome to my project blog, a space where I showcase my journey in
-						Data Science and Analytics. Here, you'll find hands-on projects in
-						Data Analysis, Machine Learning, and Data Visualization, along with
-						insights into the tools, techniques, and resources I use to bring
-						data to life. Explore, learn, and get inspired!
+						Welcome to my project blog, where I showcase my hands-on journey
+						across Data Engineering, Data Analysis, and Data Science. I build
+						production-grade data platforms using modern technologies like
+						Spark, Kafka, Airflow, Delta Lake, dbt, and Great Expectations —
+						implementing scalable ETL/ELT pipelines, medallion architectures,
+						real-time streaming, and dimensional modeling, with a strong focus
+						on fintech, remittance, and digital wallet systems. Alongside this,
+						I deliver deep data analysis and interactive visualizations that
+						transform raw transaction data into actionable business insights,
+						while also exploring Data Science projects such as fraud detection
+						patterns and predictive modeling. This space reflects my passion for
+						building reliable data infrastructure, uncovering meaningful
+						insights, and solving real-world problems with clean, scalable
+						solutions.
 					</p>
 				</div>
 			</div>
