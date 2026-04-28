@@ -66,22 +66,30 @@ export const getPostData = async (
 /**
  * 👀 Log visitor
  */
-export const logVisitor = async (
+export async function logVisitor(
 	visitorId: string,
 	postId: string,
 	supabase: SupabaseClient,
-): Promise<{ error: PostgrestError | null }> => {
-	const { error } = await supabase.from("VisitorLogs").insert({
+) {
+	const today = new Date().toISOString().split("T")[0]; // "2025-04-28"
+
+	// Check if already logged today
+	const { data: existing } = await supabase
+		.from("visitor_logs")
+		.select("id")
+		.eq("visitor_id", visitorId)
+		.eq("post_id", postId)
+		.eq("visit_date", today) // make sure this column is DATE type
+		.maybeSingle();
+
+	if (existing) return; // Already logged today, skip
+
+	await supabase.from("visitor_logs").insert({
 		visitor_id: visitorId,
 		post_id: postId,
+		visit_date: today,
 	});
-
-	if (error) {
-		console.error("Error logging visitor:", error.message);
-	}
-
-	return { error };
-};
+}
 
 /**
  * 📚 Get all posts

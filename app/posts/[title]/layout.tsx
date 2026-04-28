@@ -1,5 +1,7 @@
+// app/blog/[title]/layout.tsx  (or wherever your PostLayout is)
 import { getPostData, ifSignInUser, logVisitor } from "@/lib/models/data";
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
 export default async function PostLayout({
 	children,
@@ -10,31 +12,21 @@ export default async function PostLayout({
 }) {
 	const { title } = await params;
 	const supabase = createClient();
+	const cookieStore = await cookies();
 
 	const { user } = await ifSignInUser(await supabase);
+	const visitorId = !user
+		? (cookieStore.get("visitor_id")?.value ?? null)
+		: null;
 
-	let visitorId: string;
-	if (!user) {
-		const existingVisitorId = (await cookieStore.get("visitor_id"))?.value;
-
-		if (!existingVisitorId) {
-			const response = await fetch(
-				`${process.env.NEXT_PUBLIC_SITE_URL}/api/set-visitor-cookie`,
-			);
-			const { visitorId: newVisitorId } = await response.json();
-			visitorId = newVisitorId;
-		} else {
-			visitorId = existingVisitorId;
-		}
-	} else {
-		visitorId = "";
-	}
-
-	if (title) {
-		const { data: postData, error } = await getPostData(title, await supabase);
-
-		if (visitorId && postData) {
-			await logVisitor(visitorId, postData.id, await supabase);
+	if (title && visitorId) {
+		try {
+			const { data: postData } = await getPostData(title, await supabase);
+			if (postData?.id) {
+				await logVisitor(visitorId, postData.id, await supabase);
+			}
+		} catch (err) {
+			console.error("Failed to log visitor:", err);
 		}
 	}
 
