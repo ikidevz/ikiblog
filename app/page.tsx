@@ -1,5 +1,7 @@
 "use client";
 
+import BlogList from "@/components/BlogList";
+import LoadingBlogList from "@/components/LoadingBlogList";
 // import BlogList from "@/components/BlogList";
 // import LoadingBlogList from "@/components/LoadingBlogList";
 import { roboto_mono, space_mono } from "@/lib/font";
@@ -10,22 +12,22 @@ export default function Home() {
 	const [data, setData] = useState<PostsListData[] | null>(null);
 	const [loading, setLoading] = useState(true);
 
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		try {
-	// 			setLoading(true);
-	// 			const res = await fetch("/api/blogs");
-	// 			const { data } = await res.json();
-	// 			setData(data);
-	// 		} catch (error) {
-	// 			console.error("Error fetching data:", error);
-	// 		} finally {
-	// 			setLoading(false);
-	// 		}
-	// 	};
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				setLoading(true);
+				const res = await fetch("/api/blogs");
+				const { data } = await res.json();
+				setData(data);
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			} finally {
+				setLoading(false);
+			}
+		};
 
-	// 	fetchData();
-	// }, []);
+		fetchData();
+	}, []);
 
 	return (
 		<>
@@ -37,22 +39,15 @@ export default function Home() {
 					</h1>
 					<p
 						className={`mt-10 max-w-175 m-auto text-xs sm:text-base leading-5 ${roboto_mono.className}`}>
-						Welcome to my project blog, where I showcase my hands-on journey
-						across Data Engineering, Data Analysis, and Data Science. I build
-						production-grade data platforms using modern technologies like
-						Spark, Kafka, Airflow, Delta Lake, dbt, and Great Expectations —
-						implementing scalable ETL/ELT pipelines, medallion architectures,
-						real-time streaming, and dimensional modeling, with a strong focus
-						on fintech, remittance, and digital wallet systems. Alongside this,
-						I deliver deep data analysis and interactive visualizations that
-						transform raw transaction data into actionable business insights,
-						while also exploring Data Science projects such as fraud detection
-						patterns and predictive modeling. This space reflects my passion for
-						building reliable data infrastructure, uncovering meaningful
-						insights, and solving real-world problems with clean, scalable
-						solutions.
+						Data Engineer, Data Analyst, and Data Scientist passionate about
+						building reliable, scalable data infrastructure. I design ETL/ELT
+						pipelines, real-time streaming systems, and analytics platforms
+						using Spark, Kafka, Airflow, Delta Lake, and dbt, with a focus on
+						fintech, remittance, and digital wallet applications.
 					</p>
 				</div>
+
+				{loading ? <LoadingBlogList /> : <BlogList list={data} />}
 			</div>
 		</>
 	);

@@ -22,7 +22,7 @@ const BlogItem = ({ info }: { info: PostsListData }) => {
 					<EyeIcon className='size-6 text-primary' />
 					<span
 						className={`text-[16px] text-black font-bold ${roboto_mono.className}`}>
-						{`${info?.VisitorLogCount}`}
+						{`${info?.VisitorLogCount || 0}`}
 					</span>
 				</div>
 			</div>
@@ -45,7 +45,7 @@ const BlogItem = ({ info }: { info: PostsListData }) => {
 
 				<Avatar className=' w-12 h-12 flex items-center'>
 					{info?.Author?.avatar_url === null ? (
-						<AvatarFallback className='bg-primary text-white text-5xl'>
+						<AvatarFallback className='bg-primary text-white text-2xl'>
 							{avatar_fallback}
 						</AvatarFallback>
 					) : (

@@ -1,4 +1,3 @@
-import { category } from "./data";
 import { PostgrestError, SupabaseClient } from "@supabase/supabase-js";
 import type { StaticImageData } from "next/image";
 import type { IconType } from "react-icons";
