@@ -6,7 +6,7 @@ import { Option } from "@/components/ui/multiple-selector";
 
 export const categories: CategoryData[] = [
 	{ value: "all", name: "All" },
-	{ value: "data-analysis", name: "Data Analysis" },
+	{ value: "data-analyst", name: "Data Analyst" },
 	{ value: "data-engineering", name: "Data Engineering" },
 	{ value: "data-science", name: "Data Science" },
 	{ value: "visualization", name: "Visualization" },
@@ -17,7 +17,7 @@ export const categories: CategoryData[] = [
 ];
 
 export const categoryOptions: Option[] = [
-	{ value: "data-analysis", label: "Data Analysis" },
+	{ value: "data-analyst", label: "Data Analyst" },
 	{ value: "data-engineering", label: "Data Engineering" },
 	{ value: "data-science", label: "Data Science" },
 	{ value: "visualization", label: "Visualization" },
