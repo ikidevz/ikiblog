@@ -19,7 +19,7 @@ const SkeletonList = () => (
 	</>
 );
 
-const BlogList = ({ list, con }: PostListDataInterface) => {
+const BlogList = ({ list }: PostListDataInterface) => {
 	return (
 		<Tabs
 			defaultValue='all'
@@ -53,10 +53,14 @@ const BlogList = ({ list, con }: PostListDataInterface) => {
 							{!list ? (
 								<SkeletonList />
 							) : (
-								list.map((data, i) => {
-									if (data.category.split(", ")[0] === cat.name)
-										return <BlogItem info={data} key={i} />;
-								})
+								list
+									.filter((data) =>
+										data.category
+											.split(", ")
+											.map((c) => c.trim())
+											.includes(cat.name),
+									)
+									.map((data, i) => <BlogItem info={data} key={i} />)
 							)}
 						</ul>
 					</TabsContent>

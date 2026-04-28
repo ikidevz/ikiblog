@@ -2,8 +2,6 @@
 
 import BlogList from "@/components/BlogList";
 import LoadingBlogList from "@/components/LoadingBlogList";
-// import BlogList from "@/components/BlogList";
-// import LoadingBlogList from "@/components/LoadingBlogList";
 import { roboto_mono, space_mono } from "@/lib/font";
 import { PostsListData } from "@/lib/type";
 import { useEffect, useState } from "react";
