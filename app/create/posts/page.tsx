@@ -1,4 +1,4 @@
-// import PostForm from "@/components/PostForm";
+import PostForm from "@/components/PostForm";
 
 const CreatePost = () => {
 	return (
@@ -7,7 +7,7 @@ const CreatePost = () => {
 				<h1 className='heading'>Create Your Own Blog Project</h1>
 			</section>
 
-			{/* <PostForm /> */}
+			<PostForm />
 		</>
 	);
 };

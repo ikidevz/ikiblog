@@ -40,11 +40,11 @@ const LoginForm = () => {
 		const result = await handleLogin(values);
 
 		if (result.error) {
-			toast("Login Failed", {
+			toast.error("Login Failed", {
 				description: result.message,
 			});
 		} else {
-			toast("Login Successful", {
+			toast.success("Login Successful", {
 				description: result.message,
 			});
 		}

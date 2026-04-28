@@ -4,35 +4,43 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaGithub, FaKaggle, FaLinkedin } from "react-icons/fa";
 import { Option } from "@/components/ui/multiple-selector";
 
-export const category: CategoryData[] = [
-	{
-		value: "all",
-		name: "All",
-	},
-	{
-		value: "data-analysis",
-		name: "Data Analysis",
-	},
-	{
-		value: "machine-learning",
-		name: "Machine Learning",
-	},
-	{
-		value: "visualizaiton",
-		name: "Visualization",
-	},
-	{
-		value: "techniques",
-		name: "Techniques",
-	},
-	{
-		value: "resource",
-		name: "Resource",
-	},
-	{
-		value: "stratascratch",
-		name: "Stratascratch",
-	},
+export const categories: CategoryData[] = [
+	{ value: "all", name: "All" },
+	{ value: "data-analysis", name: "Data Analysis" },
+	{ value: "data-engineering", name: "Data Engineering" },
+	{ value: "machine-learning", name: "Machine Learning" },
+	{ value: "visualization", name: "Visualization" },
+	{ value: "techniques", name: "Techniques" },
+	{ value: "resources", name: "Resources" },
+	{ value: "projects", name: "Projects" },
+	{ value: "stratascratch", name: "Stratascratch" },
+];
+
+export const categoryOptions: Option[] = [
+	{ value: "data-analysis", label: "Data Analysis" },
+	{ value: "data-engineering", label: "Data Engineering" },
+	{ value: "machine-learning", label: "Machine Learning" },
+	{ value: "visualization", label: "Visualization" },
+	{ value: "techniques", label: "Techniques" },
+	{ value: "resources", label: "Resources" },
+	{ value: "projects", label: "Projects" },
+	{ value: "stratascratch", label: "Stratascratch" },
+];
+
+export const secondaryCategoryOptions: Option[] = [
+	{ value: "business-analysis", label: "Business Analysis" },
+	{ value: "data-exploration", label: "Data Exploration" },
+	{ value: "data-pipeline", label: "Data Pipeline" },
+	{ value: "data-modeling", label: "Data Modeling" },
+	{ value: "regression", label: "Regression" },
+	{ value: "classification", label: "Classification" },
+	{ value: "clustering", label: "Clustering" },
+	{ value: "nlp", label: "NLP" },
+	{ value: "time-series", label: "Time Series" },
+	{ value: "dashboarding", label: "Dashboarding" },
+	{ value: "sql", label: "SQL" },
+	{ value: "python", label: "Python" },
+	{ value: "big-data", label: "Big Data" },
 ];
 
 export const socials: SocialType[] = [
@@ -44,51 +52,6 @@ export const socials: SocialType[] = [
 
 	{ icon: FaXTwitter, path: "https://x.com/ikigamidevs" },
 	{ icon: FaKaggle, path: "https://www.kaggle.com/franzmonzales" },
-];
-
-export const categoryOption: Option[] = [
-	{
-		value: "Data Analysis",
-		label: "Data Analysis",
-	},
-	{
-		value: "Machine Learning",
-		label: "Machine Learning",
-	},
-	{
-		value: "Visualization",
-		label: "Visualization",
-	},
-	{
-		value: "Techniques",
-		label: "Techniques",
-	},
-	{
-		value: "Resource",
-		label: "Resource",
-	},
-	{
-		value: "Project",
-		label: "Project",
-	},
-	{
-		value: "Highlight",
-		label: "Highlight",
-	},
-	{
-		value: "Stratascratch",
-		label: "Stratascratch",
-	},
-];
-
-export const secondaryCategoryOptions: Option[] = [
-	{ value: "business-analysis", label: "Business Analysis" },
-	{ value: "data-exploration", label: "Data Exploration" },
-	{ value: "data-engineering", label: "Data Engineering" },
-	{ value: "regression", label: "Regression" },
-	{ value: "classification", label: "Classification" },
-	{ value: "nlp", label: "NLP" },
-	{ value: "clustering", label: "Clustering" },
 ];
 
 export const pageWithAuth: string[] = ["/login", "/register"];
