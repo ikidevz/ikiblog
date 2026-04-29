@@ -56,6 +56,7 @@ const Author = async ({ params, searchParams }: Props) => {
 		.eq("author_id", authorData.id);
 
 	const avatar_fallback = `${authorData.first_name[0]}${authorData.last_name[0]}`;
+
 	return (
 		<section className='profile_container'>
 			<div className='profile_card'>

@@ -17,14 +17,14 @@ export const categories: CategoryData[] = [
 ];
 
 export const categoryOptions: Option[] = [
-	{ value: "data-analyst", label: "Data Analyst" },
-	{ value: "data-engineering", label: "Data Engineering" },
-	{ value: "data-science", label: "Data Science" },
-	{ value: "visualization", label: "Visualization" },
-	{ value: "data-pipeline", label: "Data Pipeline" },
-	{ value: "resources", label: "Resources" },
-	{ value: "projects", label: "Projects" },
-	{ value: "stratascratch", label: "Stratascratch" },
+	{ value: "Data Analyst", label: "Data Analyst" },
+	{ value: "Data Engineering", label: "Data Engineering" },
+	{ value: "Data Science", label: "Data Science" },
+	{ value: "Visualization", label: "Visualization" },
+	{ value: "Data Pipeline", label: "Data Pipeline" },
+	{ value: "Resources", label: "Resources" },
+	{ value: "Projects", label: "Projects" },
+	{ value: "Stratascratch", label: "Stratascratch" },
 ];
 
 export const secondaryCategoryOptions: Option[] = [

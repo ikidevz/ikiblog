@@ -30,7 +30,6 @@ export type PostBlogData = {
 	title: string;
 	description: string;
 	category: string;
-	secondary_category: string | null;
 	imgLink: string;
 	content: string;
 };

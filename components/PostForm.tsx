@@ -12,7 +12,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { formSchema } from "@/lib/formSchema";
-import { categoryOptions, secondaryCategoryOptions } from "@/lib/data";
+import { categoryOptions } from "@/lib/data";
 import { jetbrainsMono, roboto_mono } from "@/lib/font";
 import { handleCreatePostBlog } from "@/app/posts/actions";
 import { convertToSlug } from "@/lib/string";
@@ -32,8 +32,6 @@ import {
 	InputGroupText,
 	InputGroupTextarea,
 } from "@/components/ui/input-group";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
 import MultipleSelector from "@/components/ui/multiple-selector";
 
 type FormValues = z.infer<typeof formSchema>;
@@ -48,13 +46,12 @@ const PostForm = () => {
 			title: "",
 			description: "",
 			category: "",
-			secondary_category: null,
 			imgLink: "",
 			content: "",
 		},
 	});
 
-	const selectedCategory = form.watch("category");
+	// const selectedCategory = form.watch("category");
 
 	async function onSubmit(values: FormValues) {
 		setIsLoading(true);
@@ -170,46 +167,6 @@ const PostForm = () => {
 						</Field>
 					)}
 				/>
-
-				{/* Secondary Category (Stratascratch only) */}
-				{selectedCategory.includes("stratascratch") && (
-					<Controller
-						name='secondary_category'
-						control={form.control}
-						render={({ field, fieldState }) => (
-							<Field data-invalid={fieldState.invalid}>
-								<FieldLabel
-									className={`startup-form_label ${jetbrainsMono.className}`}>
-									Stratascratch Category
-								</FieldLabel>
-								<RadioGroup
-									defaultValue='business-analysis'
-									onValueChange={field.onChange}>
-									<div className='grid grid-cols-2 gap-4 mt-4'>
-										{secondaryCategoryOptions.map((option) => (
-											<div
-												key={option.value}
-												className='flex items-center space-x-2'>
-												<RadioGroupItem
-													value={option.value}
-													id={option.value}
-												/>
-												<Label
-													htmlFor={option.value}
-													className={jetbrainsMono.className}>
-													{option.label}
-												</Label>
-											</div>
-										))}
-									</div>
-								</RadioGroup>
-								{fieldState.invalid && (
-									<FieldError errors={[fieldState.error]} />
-								)}
-							</Field>
-						)}
-					/>
-				)}
 
 				{/* Image URL */}
 				<Controller

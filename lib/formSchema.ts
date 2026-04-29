@@ -4,7 +4,6 @@ export const formSchema = z.object({
 	title: z.string().min(3).max(100),
 	description: z.string().min(20).max(1000),
 	category: z.string(),
-	secondary_category: z.string().nullable(),
 	imgLink: z
 		.string()
 		.url()
