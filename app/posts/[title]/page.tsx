@@ -47,19 +47,45 @@ export async function generateMetadata(
 		};
 	}
 
+	const post = DataFetch.data;
+	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+	const pageUrl = `${baseUrl}/blog/${title}`;
+	const imageUrl = post.image_link;
+	const authorName =
+		`${post.Author?.first_name ?? ""} ${post.Author?.last_name ?? ""}`.trim();
+
 	return {
-		title: `${DataFetch.data.title} | Iki's Project Blog`,
-		description: DataFetch.data.description,
+		title: `${post.title} | Iki's Project Blog`,
+		description: post.description,
 		authors: [
 			{
-				name: `${DataFetch.data.Author?.first_name} ${DataFetch.data.Author?.last_name}`,
-				url: DataFetch.data.Author?.avatar_url ?? undefined,
+				name: authorName,
+				url: post.Author?.avatar_url ?? undefined,
 			},
 		],
 		openGraph: {
-			title: `${DataFetch.data.title} | Iki's Project Blog`,
-			description: DataFetch.data.description,
-			images: [DataFetch.data.image_link ?? "/default-og-image.jpg"],
+			type: "article",
+			url: pageUrl,
+			title: `${post.title} | Iki's Project Blog`,
+			description: post.description,
+			siteName: "Iki's Project Blog",
+			images: [
+				{
+					url: imageUrl,
+					width: 1200,
+					height: 627,
+					alt: post.title,
+				},
+			],
+			// LinkedIn reads article-specific fields:
+			publishedTime: post.created_at ?? undefined,
+			authors: [pageUrl],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: `${post.title} | Iki's Project Blog`,
+			description: post.description,
+			images: [imageUrl],
 		},
 	};
 }
